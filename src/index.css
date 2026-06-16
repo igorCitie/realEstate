@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Poppins", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-script: "Pinyon Script", cursive;
+
+  /* Warm palette — Jocionara Lima */
+  --color-white: #ffffff; /* clean base surface */
+  --color-cream: #f0e5da; /* warm band background */
+  --color-sand: #eeb89a; /* peach alt-section band */
+  --color-paper: #faf3ec; /* lifted card surface */
+  --color-olive: #331712; /* dark brown section (was olive) */
+  --color-olive-soft: #4a2a22;
+  --color-clay: #a94f3a; /* terracotta accent */
+  --color-clay-soft: #eeb89a; /* peach accent on dark bg */
+  --color-ink: #331712; /* headings / body */
+  --color-stone: #7a5b4e; /* muted text */
+  --color-line: #e2d2c2; /* hairline borders */
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Wide-tracked uppercase eyebrow label used throughout the design */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
