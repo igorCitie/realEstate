@@ -1,0 +1,198 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, MessageCircle, X } from "lucide-react";
+import { waUrl } from "../../site";
+import product1 from "../../assets/product-1.jpg";
+import product2 from "../../assets/product-2.jpg";
+import product3 from "../../assets/product-3.jpg";
+
+type Product = {
+  image: string;
+  location: string;
+  title: string;
+  description: string;
+  details: string;
+};
+
+const PRODUCTS: Product[] = [
+  {
+    image: product1,
+    location: "Av. Jackson Kepler — Ponta D'Areia",
+    title: "Quartier 22",
+    description:
+      "Área privativa de até 165 m². Com 3 suítes simples e 1 suíte master com 2 banheiros.",
+    details:
+      "Empreendimento de alto padrão na Ponta D'Areia, com área privativa de até 165 m². São 3 suítes simples e 1 suíte master com 2 banheiros, varanda integrada à sala de estar e acabamentos premium. O condomínio conta com piscina, espaço gourmet, academia e segurança 24h, a poucos passos da orla.",
+  },
+  {
+    image: product2,
+    location: "Rua Grande — Centro",
+    title: "Edifício Reviver",
+    description:
+      "Apartamentos de 78 a 112 m². Varanda gourmet, 2 vagas e lazer completo no rooftop.",
+    details:
+      "Living urbano no coração do Centro histórico, com apartamentos de 78 a 112 m². Cada unidade tem varanda gourmet e 2 vagas de garagem. O rooftop reúne piscina com borda infinita, lounge e coworking — perfeito para quem quer viver perto de tudo, com conforto e mobilidade.",
+  },
+  {
+    image: product3,
+    location: "Av. dos Holandeses — Calhau",
+    title: "Mares Residence",
+    description:
+      "Coberturas duplex com vista para o mar. 4 suítes, piscina privativa e 3 vagas.",
+    details:
+      "Coberturas duplex exclusivas na Av. dos Holandeses, com vista panorâmica para o mar. São 4 suítes, piscina privativa na varanda e 3 vagas de garagem. Acabamento de altíssimo padrão, automação residencial e área de lazer completa para uma vida à beira-mar com privacidade total.",
+  },
+];
+
+export default function Products() {
+  const [selected, setSelected] = useState<Product | null>(null);
+
+  // Close on Escape and lock body scroll while the modal is open.
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [selected]);
+
+  return (
+    <section id="oportunidades" className="bg-paper px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl">
+        {/* Header — title with copy to the side */}
+        <div className="grid items-end gap-8 lg:grid-cols-[7fr_5fr] lg:gap-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-display text-3xl leading-snug tracking-tight text-ink sm:text-4xl">
+              Portfólio <span className="text-clay">selecionado</span>
+            </h2>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-base leading-relaxed text-stone lg:text-right"
+          >
+            Uma seleção criteriosa dos endereços mais exclusivos de São Luís —
+            cada empreendimento avaliado pessoalmente para garantir localização,
+            assinatura e padrão à altura das suas expectativas.
+          </motion.p>
+        </div>
+
+        {/* Product cards */}
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {PRODUCTS.map((product, i) => (
+            <motion.article
+              key={i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-line/60"
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <p className="eyebrow mb-3 text-clay">{product.location}</p>
+                <h3 className="font-display text-xl text-ink">
+                  {product.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">
+                  {product.description}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSelected(product)}
+                  className="group/btn mt-auto inline-flex items-center gap-2 self-start pt-6 text-sm font-medium text-ink transition-colors hover:text-clay"
+                >
+                  Ver detalhes
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </button>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+
+      {/* Detail modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setSelected(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.title}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 16 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative grid max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-2xl md:grid-cols-2"
+            >
+              <button
+                type="button"
+                onClick={() => setSelected(null)}
+                aria-label="Fechar"
+                className="absolute right-4 top-4 z-10 rounded-full bg-white/80 p-2 text-ink backdrop-blur transition-colors hover:bg-white"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <img
+                src={selected.image}
+                alt={selected.title}
+                className="h-56 w-full object-cover md:h-full"
+              />
+
+              <div className="flex flex-col overflow-y-auto p-7 sm:p-9">
+                <p className="eyebrow mb-3 text-clay">{selected.location}</p>
+                <h3 className="font-display text-2xl text-ink sm:text-3xl">
+                  {selected.title}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-stone">
+                  {selected.details}
+                </p>
+
+                <a
+                  href={waUrl(
+                    `Olá, Jocionara! Tenho interesse no imóvel ${selected.title} (${selected.location}). Pode me passar mais informações?`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-clay px-7 py-3.5 text-cream transition-colors hover:bg-ink"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  <span className="eyebrow">Falar no WhatsApp</span>
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}

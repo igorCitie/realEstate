@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-scroll";
-import { IMG } from "../../site";
+import joProfile from "../../assets/jo-profile.jpg";
 
 export default function Hero() {
   return (
@@ -19,10 +19,12 @@ export default function Hero() {
             className="order-1"
           >
             <h1 className="font-display text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
-              Corretora de imóveis de alto padrão.
+              Imóveis de alto padrão em São Luís.
             </h1>
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream/70">
-              Conheça nosso portfólio de propriedades abaixo.
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-cream/70">
+              Assessoria exclusiva e curadoria de endereços únicos para quem
+              busca viver — e investir — com sofisticação. Conheça o portfólio
+              selecionado a seguir.
             </p>
           </motion.div>
 
@@ -34,7 +36,7 @@ export default function Hero() {
             className="order-2"
           >
             <img
-              src={IMG.portrait}
+              src={joProfile}
               alt="Jocionara Lima, corretora de imóveis"
               className="mx-auto aspect-square w-full max-w-xs rounded-full border-6 object-cover shadow-xl lg:ml-auto lg:mr-0 lg:max-w-md lg:aspect-[4/5] lg:rounded-b-none lg:rounded-t-full"
             />

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Poppins", system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Work Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Work Sans", system-ui, "Segoe UI", Roboto, sans-serif;
   --font-script: "Pinyon Script", cursive;
 
   /* Warm palette — Jocionara Lima */
@@ -25,6 +25,23 @@
 
 html {
   scroll-behavior: smooth;
+  /* Firefox */
+  scrollbar-color: var(--color-clay) transparent;
+}
+
+/* WebKit / Chromium */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-clay);
+  border-radius: 9999px;
 }
 
 body {

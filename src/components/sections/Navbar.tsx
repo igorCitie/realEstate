@@ -5,8 +5,8 @@ import monogram from "../../assets/simbolo (1).png";
 
 const NAV_LINKS = [
   { label: "Sobre", to: "sobre" },
-  { label: "Diferenciais", to: "diferenciais" },
-  { label: "Processo", to: "processo" },
+  { label: "Serviços", to: "servicos" },
+  { label: "Imóveis", to: "oportunidades" },
   { label: "Histórias", to: "historias" },
   { label: "Contato", to: "contato" },
 ];
@@ -14,11 +14,14 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [atTop, setAtTop] = useState(true);
   const lastY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
+      // Overflowing monogram only while we're at the very top of the page.
+      setAtTop(y <= 8);
       // Hide when scrolling down past the bar; reveal when scrolling up.
       if (y > lastY.current && y > 80) {
         setHidden(true);
@@ -45,12 +48,14 @@ export default function Navbar() {
           smooth
           duration={500}
           aria-label="Início"
-          className="flex h-12 w-12 cursor-pointer items-center justify-center md:h-28 md:w-24 md:self-start md:bg-cream md:shadow-md"
+          className={`flex h-12 w-12 cursor-pointer items-center justify-center transition-opacity duration-300 md:h-32 md:w-28 md:self-start md:bg-cream md:shadow-md ${
+            atTop ? "md:opacity-100" : "md:pointer-events-none md:opacity-0"
+          }`}
         >
           <img
             src={monogram}
             alt="Jocionara Lima"
-            className="h-10 w-auto object-contain md:h-20"
+            className="h-10 w-auto object-contain md:h-24"
           />
         </Link>
 

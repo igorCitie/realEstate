@@ -1,14 +1,18 @@
 // Centralized site content / contact details.
 // Swap WHATSAPP_NUMBER and the image URLs below for the real assets.
-export const WHATSAPP_NUMBER = "5598000000000"; // DDI 55 + DDD 98 + número
+export const WHATSAPP_NUMBER = "5598981790018"; // DDI 55 + DDD 98 + 9 8179-0018
 export const WHATSAPP_MESSAGE =
-  "Olá, Jocionara! Vim pelo site e gostaria de conversar sobre imóveis em São Luís.";
+  "Olá, Jocionara! Vim pelo site e gostaria de conhecer seu portfólio de imóveis de alto padrão em São Luís.";
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_MESSAGE,
 )}`;
 
-export const INSTAGRAM_URL = "https://instagram.com/";
+// Build a WhatsApp link with a custom message (e.g. about a specific property).
+export const waUrl = (message: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+export const INSTAGRAM_URL = "https://www.instagram.com/jocionara/";
 export const EMAIL = "contato@jocionaralima.com.br";
 
 // Placeholder imagery (Unsplash) — replace with Jocionara Lima's real photos.
