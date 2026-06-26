@@ -42,7 +42,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h2 className="font-display text-3xl leading-snug tracking-tight text-ink sm:text-4xl">
-             Endereços de alto padrão para investir e <span className="text-clay">viver como você sempre sonhou</span>.
+             Endereços de alto padrão para investir e <span className="text-clay">viver como você sempre sonhou.</span>
           </h2>
 
           <div className="mt-7 space-y-5 text-base leading-relaxed text-stone">
