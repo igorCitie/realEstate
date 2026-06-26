@@ -40,7 +40,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex min-h-[26rem] flex-col bg-black/10 p-8 pb-14 transition-colors hover:bg-black/15 sm:p-10 sm:pb-16"
+            className="flex min-h-[26rem] flex-col rounded-xl bg-black/10 p-8 pb-14 transition-colors hover:bg-black/15 sm:p-10 sm:pb-16 "
           >
             <Icon
               className="mx-auto mt-4 h-28 w-28 text-cream"
