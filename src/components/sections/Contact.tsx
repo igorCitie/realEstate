@@ -27,7 +27,7 @@ export default function Contact() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="eyebrow mt-9 inline-flex items-center gap-2.5 rounded-full bg-clay px-7 py-3.5 text-cream transition-colors hover:bg-ink"
+            className="eyebrow mt-9 inline-flex items-center gap-2.5 rounded bg-clay px-7 py-3.5 text-cream transition-colors hover:bg-ink"
           >
             <svg
               viewBox="0 0 24 24"

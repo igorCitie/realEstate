@@ -106,7 +106,7 @@ export default function Footer() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="eyebrow mt-7 inline-flex items-center justify-center bg-clay-soft px-8 py-4 text-ink transition-colors hover:bg-cream"
+            className="eyebrow mt-7 inline-flex rounded items-center justify-center bg-clay-soft px-8 py-4 text-ink transition-colors hover:bg-cream"
           >
             Enviar mensagem
           </a>

@@ -24,7 +24,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* No native smooth-scroll: react-scroll's <Link smooth> animates via
+     window.scrollTo(), and a global scroll-behavior:smooth re-animates each
+     of those steps, making the page stop short of the target section. */
   /* Firefox */
   scrollbar-color: var(--color-clay) transparent;
 }
