@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-scroll";
 import joProfile from "../../assets/jo-profile.jpg";
 
@@ -10,36 +10,59 @@ export default function Hero() {
       className="relative flex min-h-screen flex-col bg-clay text-cream"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-1 items-center px-6 pt-28 pb-12">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Copy */}
-          <motion.div
+        <div className="grid w-full grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-6 lg:gap-x-16">
+          {/* Heading */}
+          <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="order-1"
+            className="order-1 font-display text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl md:col-start-1 md:row-start-1 md:self-end md:text-5xl lg:text-7xl"
           >
-            <h1 className="font-display text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
-              Imóveis de alto padrão em São Luís.
-            </h1>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-cream/70">
-              Assessoria exclusiva e curadoria de endereços únicos para quem
-              busca viver — e investir — com sofisticação. Conheça o portfólio
-              selecionado a seguir.
-            </p>
-          </motion.div>
+            Imóveis de alto padrão em São&nbsp;Luís.
+          </motion.h1>
 
           {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="order-2"
+            className="order-2 md:col-start-2 md:row-start-1 md:row-span-2"
           >
-            <img
-              src={joProfile}
-              alt="Jocionara Lima, corretora de imóveis"
-              className="mx-auto aspect-square w-full max-w-xs rounded-full border-6 object-cover shadow-xl lg:ml-auto lg:mr-0 lg:max-w-md lg:aspect-[4/5] lg:rounded-b-none lg:rounded-t-full"
-            />
+            <div className="relative mx-auto w-full max-w-[15rem] md:ml-auto md:mr-0 md:max-w-sm lg:max-w-md">
+              <img
+                src={joProfile}
+                alt="Jocionara Lima, corretora de imóveis"
+                className="aspect-square w-full rounded-full border-6 object-cover shadow-xl md:aspect-[4/5] md:rounded-b-none md:rounded-t-full"
+              />
+              {/* Fine inset line just inside the white border */}
+              <div className="pointer-events-none absolute inset-[11px] rounded-full border border-cream/40 md:rounded-b-none md:rounded-t-full" />
+              {/* Second, tighter inset line */}
+              <div className="pointer-events-none absolute inset-[16px] rounded-full border border-cream/25 md:rounded-b-none md:rounded-t-full" />
+            </div>
+          </motion.div>
+
+          {/* Body */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="order-3 md:col-start-1 md:row-start-2 md:self-start"
+          >
+            <p className="max-w-sm text-sm leading-relaxed text-cream/90">
+              Assessoria exclusiva e curadoria de endereços únicos para quem
+              busca viver — e investir — com sofisticação. Conheça o portfólio
+              selecionado a seguir.
+            </p>
+            <Link
+              to="oportunidades"
+              smooth
+              duration={500}
+              offset={-72}
+              className="mt-8 inline-flex cursor-pointer items-center gap-3 rounded bg-cream px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay transition-colors hover:bg-white"
+            >
+              Ver portfólio
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
         </div>
       </div>
