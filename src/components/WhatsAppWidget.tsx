@@ -61,7 +61,7 @@ export default function WhatsAppWidget() {
               </span>
               <div className="min-w-0 flex-1">
                 <p className="font-display text-sm text-cream">Jocionara Lima</p>
-                <p className="eyebrow text-[0.6rem] text-cream/60">Online · Responde rápido</p>
+                <p className="eyebrow text-[0.6rem] text-cream/60">Online</p>
               </div>
               <button
                 type="button"
