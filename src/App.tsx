@@ -7,6 +7,7 @@ import Testimonials from "./components/sections/Testimonials";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 import Divider from "./components/Divider";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppWidget />
     </>
   );
 }
