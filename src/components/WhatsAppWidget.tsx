@@ -67,7 +67,7 @@ export default function WhatsAppWidget() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Fechar"
-                className="rounded-full p-1 text-cream/70 transition-colors hover:bg-white/10 hover:text-cream"
+                className="cursor-pointer rounded-full p-1 text-cream/70 transition-colors hover:bg-white/10 hover:text-cream"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -105,7 +105,7 @@ export default function WhatsAppWidget() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, type: "spring", stiffness: 260, damping: 20 }}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 ring-1 ring-black/5"
+        className="relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-cream text-clay shadow-lg shadow-black/15 ring-1 ring-line"
       >
         <AnimatePresence>
           {!open && unread && (
@@ -114,7 +114,7 @@ export default function WhatsAppWidget() {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={{ type: "spring", stiffness: 500, damping: 22 }}
-              className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-clay px-1 text-[0.7rem] font-semibold leading-none text-cream ring-2 ring-white"
+              className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-clay px-1 text-[0.7rem] font-semibold leading-none text-cream ring-2 ring-cream"
             >
               1
             </motion.span>
