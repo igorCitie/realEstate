@@ -66,7 +66,7 @@ export default function WhatsAppWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="w-[19rem] origin-bottom-right overflow-hidden rounded-2xl border border-line bg-paper shadow-2xl"
+            className="w-[21rem] origin-bottom-right overflow-hidden rounded-2xl border border-line bg-paper shadow-2xl"
           >
             <div className="flex items-center gap-3 bg-ink px-5 py-4">
               <span className="relative shrink-0">
