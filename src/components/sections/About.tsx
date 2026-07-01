@@ -5,7 +5,7 @@ import { INSTAGRAM_URL, WHATSAPP_URL } from "../../site";
 
 export default function About() {
   return (
-    <section id="sobre" className="px-6 py-32 sm:py-44">
+    <section id="sobre" className="bg-paper px-6 py-32 sm:py-44">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
         {/* Stacked photos */}
         <motion.div

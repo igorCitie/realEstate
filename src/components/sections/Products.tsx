@@ -49,6 +49,19 @@ const PRODUCTS: Product[] = [
   },
 ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default function Products() {
   const [selected, setSelected] = useState<Product | null>(null);
 
@@ -71,7 +84,7 @@ export default function Products() {
   }, [selected]);
 
   return (
-    <section id="oportunidades" className="bg-paper px-6 py-24 sm:py-32">
+    <section id="oportunidades" className="bg-white px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         {/* Header — title with copy to the side */}
         <div className="grid items-end gap-8 lg:grid-cols-[7fr_5fr] lg:gap-24">
