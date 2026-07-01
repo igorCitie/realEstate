@@ -91,7 +91,7 @@ export default function ImageCarousel({ images, alt = "" }: ImageCarouselProps) 
     <div className="w-full shrink-0">
       <div
         ref={containerRef}
-        className="relative h-64 w-full overflow-hidden bg-ink/5 sm:h-80 lg:h-96"
+        className="relative h-64 w-full overflow-hidden bg-ink/5 sm:h-72 lg:h-72"
         style={{ perspective: 1000 }}
       >
         <motion.div
