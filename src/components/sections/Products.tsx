@@ -190,7 +190,7 @@ export default function Products() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="eyebrow inline-flex items-center justify-center gap-2.5 rounded bg-clay px-7 py-3.5 text-cream transition-colors hover:bg-ink"
+                    className="eyebrow flex w-full items-center justify-center gap-2.5 rounded bg-clay px-7 py-3.5 text-cream transition-colors hover:bg-ink sm:inline-flex sm:w-auto"
                   >
                     <svg
                       viewBox="0 0 24 24"
