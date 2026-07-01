@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
 import { waUrl } from "../../site";
+import ImageCarousel from "../ImageCarousel";
 import product1 from "../../assets/product-1.jpg";
 import product2 from "../../assets/product-2.jpg";
 import product3 from "../../assets/product-3.jpg";
+import about1 from "../../assets/about-1.jpg";
+import about2 from "../../assets/about-2.jpg";
+import contact1 from "../../assets/contact-1.jpg";
 
 type Product = {
-  image: string;
+  // First image doubles as the card thumbnail; the rest fill the carousel.
+  images: string[];
   location: string;
   title: string;
   description: string;
@@ -16,7 +21,7 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   {
-    image: product1,
+    images: [product1, about1, contact1],
     location: "Av. Jackson Kepler — Ponta D'Areia",
     title: "Quartier 22",
     description:
@@ -25,7 +30,7 @@ const PRODUCTS: Product[] = [
       "Empreendimento de alto padrão na Ponta D'Areia, com área privativa de até 165 m². São 3 suítes simples e 1 suíte master com 2 banheiros, varanda integrada à sala de estar e acabamentos premium. O condomínio conta com piscina, espaço gourmet, academia e segurança 24h, a poucos passos da orla.",
   },
   {
-    image: product2,
+    images: [product2, about2, about1],
     location: "Rua Grande — Centro",
     title: "Edifício Reviver",
     description:
@@ -34,7 +39,7 @@ const PRODUCTS: Product[] = [
       "Living urbano no coração do Centro histórico, com apartamentos de 78 a 112 m². Cada unidade tem varanda gourmet e 2 vagas de garagem. O rooftop reúne piscina com borda infinita, lounge e coworking — perfeito para quem quer viver perto de tudo, com conforto e mobilidade.",
   },
   {
-    image: product3,
+    images: [product3, contact1, about2],
     location: "Av. dos Holandeses — Calhau",
     title: "Mares Residence",
     description:
@@ -104,7 +109,7 @@ export default function Products() {
             >
               <div className="overflow-hidden">
                 <img
-                  src={product.image}
+                  src={product.images[0]}
                   alt={product.title}
                   className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -120,7 +125,7 @@ export default function Products() {
                 <button
                   type="button"
                   onClick={() => setSelected(product)}
-                  className="group/btn mt-auto inline-flex items-center gap-2 self-start pt-6 text-sm font-medium text-ink transition-colors hover:text-clay"
+                  className="group/btn mt-auto inline-flex cursor-pointer items-center gap-2 self-start pt-6 text-sm font-medium text-ink transition-colors hover:text-clay"
                 >
                   Ver detalhes
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -151,7 +156,7 @@ export default function Products() {
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative grid max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-2xl md:grid-cols-2"
+              className="relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl lg:max-w-2xl"
             >
               <button
                 type="button"
@@ -162,13 +167,9 @@ export default function Products() {
                 <X className="h-5 w-5" />
               </button>
 
-              <img
-                src={selected.image}
-                alt={selected.title}
-                className="h-56 w-full object-cover md:h-full"
-              />
+              <ImageCarousel images={selected.images} alt={selected.title} />
 
-              <div className="flex flex-col overflow-y-auto p-7 sm:p-9">
+              <div className="flex flex-col overflow-y-auto p-7 sm:p-9 sm:pt-8">
                 <p className="eyebrow mb-3 text-clay">{selected.location}</p>
                 <h3 className="font-display text-2xl text-ink sm:text-3xl">
                   {selected.title}
