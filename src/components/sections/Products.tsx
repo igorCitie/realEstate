@@ -61,9 +61,12 @@ export default function Products() {
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // Signal open modals so the floating WhatsApp widget can hide on mobile.
+    document.body.setAttribute("data-modal-open", "true");
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
+      document.body.removeAttribute("data-modal-open");
     };
   }, [selected]);
 

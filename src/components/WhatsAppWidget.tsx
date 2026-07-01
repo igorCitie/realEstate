@@ -14,6 +14,20 @@ export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
   const [unread, setUnread] = useState(false);
   const [opened, setOpened] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // Track fullscreen modals (e.g. the Products detail view) so the widget can
+  // step aside on mobile, where it otherwise overlaps the open card.
+  useEffect(() => {
+    const sync = () => setModalOpen(document.body.hasAttribute("data-modal-open"));
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-modal-open"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   // Surface the unread badge a few seconds in — but only if the visitor
   // hasn't already opened the widget.
@@ -40,7 +54,11 @@ export default function WhatsAppWidget() {
   }, [open]);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 sm:bottom-7 sm:right-7">
+    <div
+      className={`fixed bottom-5 right-5 z-50 flex-col items-end gap-3 sm:bottom-7 sm:right-7 sm:flex ${
+        modalOpen ? "hidden" : "flex"
+      }`}
+    >
       <AnimatePresence>
         {open && (
           <motion.div
